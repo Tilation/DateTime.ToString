@@ -50,6 +50,8 @@ namespace Tilation.DateTime.Visualize
 
         void CalculateLabel2()
         {
+            // sip esto es un asco pero funciona rapido
+            // esto muestra los ejemplos de todos los tipos de formato diferente
             string ss =     $"{System.DateTime.Now.ToString("d")}\n" +
                             $"{System.DateTime.Now.ToString("D")}\n" +
                             $"{System.DateTime.Now.ToString("f")}\n" +

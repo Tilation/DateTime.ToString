@@ -19,14 +19,15 @@ namespace Tilation.DateTime.Visualize
         public MainForm()
         {
             InitializeComponent();
-            label2.Text = "Click Here to Copy!";
-            label1.Text = System.DateTime.Now.ToString(textBox1.Text);
+
             formCheatSheet = new FormCheatSheet();
             formAbout = new About();
+
             timer = new Timer();
             timer.Interval = 1000;
             timer.Tick += timer_tick;
             timer.Start();
+
             UpdatePreview();
         }
 
@@ -39,6 +40,7 @@ namespace Tilation.DateTime.Visualize
         {
             try
             {
+                // intenta parsear el texto como formato
                 label2.ForeColor = Color.DodgerBlue;
                 label1.Text = System.DateTime.Now.ToString(textBox1.Text);
                 if (textBox1.Text == "")
@@ -52,7 +54,7 @@ namespace Tilation.DateTime.Visualize
             }
             catch (Exception ex)
             {
-
+                // si hay un error lo muestra en el label azul
                 label2.Text = ex.Message;
             }
         }
@@ -69,14 +71,15 @@ namespace Tilation.DateTime.Visualize
                 Clipboard.SetText(label2.Text);
                 label2.ForeColor = Color.Green;
                 label2.Text = "Copied!";
-                
             }
-           
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            // si se lo comio el gc, hacemos otro
             if (formCheatSheet.IsDisposed) { formCheatSheet = new FormCheatSheet(); }
+
+            // solo mostramos el form si esta oculto
             if (!formCheatSheet.Visible)
             {
                 formCheatSheet.Show();
@@ -86,7 +89,11 @@ namespace Tilation.DateTime.Visualize
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // si se lo comio el gc, hacemos otro
+
             if (formAbout.IsDisposed) { formAbout = new About(); }
+            
+            // solo mostramos el form si esta oculto
             if (!formAbout.Visible)
             {
                 formAbout.Width = Width;
